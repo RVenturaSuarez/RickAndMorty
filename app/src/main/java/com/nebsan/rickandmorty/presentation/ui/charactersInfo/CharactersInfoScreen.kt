@@ -13,6 +13,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -24,6 +25,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import com.nebsan.rickandmorty.R
 import com.nebsan.rickandmorty.domain.model.ResponseError
 import com.nebsan.rickandmorty.presentation.ui.charactersInfo.components.CharactersList
+import com.nebsan.rickandmorty.presentation.ui.charactersInfo.components.TextFieldCharacters
 import com.nebsan.rickandmorty.presentation.ui.charactersInfo.components.TopBarCharacters
 import com.nebsan.rickandmorty.presentation.viewmodel.CharactersViewModel
 
@@ -33,6 +35,8 @@ fun CharactersInfoScreen(
 ) {
 
     val characters = charactersViewModel.characters.collectAsLazyPagingItems()
+    val characterName = charactersViewModel.characterName.collectAsState().value
+
 
     Scaffold(topBar = { TopBarCharacters() }) { paddingValues ->
         Column(
@@ -42,6 +46,13 @@ fun CharactersInfoScreen(
                 .padding(paddingValues)
                 .fillMaxSize()
         ) {
+            TextFieldCharacters(
+                characterName = characterName,
+                characterNameChanged = {
+                    charactersViewModel.onCharacterNameChanged(it)
+                }
+            )
+
             when (characters.loadState.refresh) {
                 is LoadState.Loading -> {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

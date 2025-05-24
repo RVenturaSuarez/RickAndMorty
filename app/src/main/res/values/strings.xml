@@ -2,6 +2,8 @@
     <string name="app_name">RickAndMorty</string>
     <string name="title_topBarCharacters">Characters</string>
 
+    <string name="search_character_label">Search character…</string>
+
     <string name="message_error">Error: %1$s</string>
     <string name="btn_retry">Retry</string>
 

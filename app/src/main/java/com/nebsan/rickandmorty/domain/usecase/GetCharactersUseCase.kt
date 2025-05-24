@@ -11,8 +11,8 @@ import javax.inject.Inject
 
 class GetCharactersUseCase @Inject constructor(private val charactersRepository: CharactersRepository) {
 
-    operator fun invoke(): Flow<PagingData<CharacterInfo>> {
-        return charactersRepository.getCharacters()
+    operator fun invoke(characterName: String?): Flow<PagingData<CharacterInfo>> {
+        return charactersRepository.getCharacters(characterName)
             .map { pagingData ->
                 pagingData.map { characterDto -> characterDto.toDomain() }
             }

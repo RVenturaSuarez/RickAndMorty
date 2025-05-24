@@ -19,10 +19,10 @@ class CharactersRepositoryImpl @Inject constructor(private val charactersApi: Ch
     }
 
 
-    override fun getCharacters(): Flow<PagingData<CharacterDto>> {
+    override fun getCharacters(characterName: String?): Flow<PagingData<CharacterDto>> {
         return Pager(config = PagingConfig(pageSize = PAGE_SIZE, prefetchDistance = PREFETCH_ITEMS),
             pagingSourceFactory = {
-                CharacterPagingSource(charactersApi)
+                CharacterPagingSource(charactersApi, characterName)
             }).flow
     }
 }
