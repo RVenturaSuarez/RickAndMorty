@@ -1,7 +1,9 @@
 package com.nebsan.rickandmorty.domain.repository
 
-import com.nebsan.rickandmorty.data.remote.dto.CharactersResponseDto
+import androidx.paging.PagingData
+import com.nebsan.rickandmorty.data.remote.dto.CharacterDto
+import kotlinx.coroutines.flow.Flow
 
 interface CharactersRepository {
-    suspend fun getCharacters(): CharactersResponseDto
+    fun getCharacters(characterName: String? = null): Flow<PagingData<CharacterDto>>
 }
