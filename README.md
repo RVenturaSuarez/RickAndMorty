@@ -1,8 +1,8 @@
-# 🧪 RickAnMorty App
+# 🧪 RickAndMorty App
 
 ## 📖 Introducción
 
-**RickAnMorty App** es una aplicación Android. Su objetivo es mostrar un listado de personajes de la serie *Rick and Morty* y permitir consultar información detallada de cada uno.
+**RickAndMorty App** es una aplicación Android. Su objetivo es mostrar un listado de personajes de la serie *Rick and Morty* y permitir consultar información detallada de cada uno.
 
 La app se desarrolló aplicando buenas prácticas de Clean Architecture, patrón **MVVM**.
 
