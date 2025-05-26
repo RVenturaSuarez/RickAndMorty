@@ -4,6 +4,8 @@
 
     <string name="search_character_label">Search character…</string>
 
+    <string name="episodes">Episodes:</string>
+
     <string name="message_error">Error: %1$s</string>
     <string name="btn_retry">Retry</string>
 

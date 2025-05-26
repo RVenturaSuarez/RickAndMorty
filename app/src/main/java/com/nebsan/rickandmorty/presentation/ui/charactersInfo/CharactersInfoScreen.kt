@@ -32,6 +32,7 @@ import com.nebsan.rickandmorty.presentation.viewmodel.CharactersViewModel
 @Composable
 fun CharactersInfoScreen(
     charactersViewModel: CharactersViewModel = hiltViewModel(),
+    onNavigateToDetail: (Int) -> Unit
 ) {
 
     val characters = charactersViewModel.characters.collectAsLazyPagingItems()
@@ -101,7 +102,7 @@ fun CharactersInfoScreen(
                     ) {
                         CharactersList(
                             characters = characters,
-                            onDetailCharacter = { },
+                            onDetailCharacter = { characterId -> onNavigateToDetail(characterId) },
                             modifier = Modifier.padding(horizontal = 20.dp)
                         )
                     }
