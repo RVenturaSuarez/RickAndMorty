@@ -1,5 +1,7 @@
 package com.nebsan.rickandmorty.di
 
+import com.nebsan.rickandmorty.common.AndroidDispatcherProvider
+import com.nebsan.rickandmorty.common.DispatcherProvider
 import com.nebsan.rickandmorty.data.remote.CharactersApi
 import com.nebsan.rickandmorty.data.repository.CharactersRepositoryImpl
 import com.nebsan.rickandmorty.domain.repository.CharactersRepository
@@ -27,8 +29,14 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCharactersRepository(charactersApi: CharactersApi): CharactersRepository {
-        return CharactersRepositoryImpl(charactersApi)
+    fun provideCharactersRepository(charactersApi: CharactersApi, dispatcherProvider: DispatcherProvider): CharactersRepository {
+        return CharactersRepositoryImpl(charactersApi, dispatcherProvider)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDispatcherProvider(): DispatcherProvider {
+        return AndroidDispatcherProvider()
     }
 
 }
